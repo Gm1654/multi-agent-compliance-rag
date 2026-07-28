@@ -1,0 +1,167 @@
+[
+  {
+    "case_id": "RL-2024-001",
+    "equipment": "Borum 20T Hydraulic Workshop Press",
+    "date": "2024-01-12",
+    "issue": "Ram drifted down slowly while release valve was closed; pump felt spongy during operation.",
+    "symptoms": "Loss of holding pressure, spongy pump handle, visible oil seepage at hose fitting.",
+    "root_cause": "Air trapped in hydraulic system after hose replacement; minor leak at tee coupler O-ring.",
+    "solution_applied": "Bled hydraulic pump per manual procedure, replaced O-ring on tee coupler, refilled with hydraulic jack oil to correct level, pressure-tested to rated capacity.",
+    "downtime_hours": 2.5,
+    "technician": "J. Martinez"
+  },
+  {
+    "case_id": "RL-2024-002",
+    "equipment": "Atlas 15T Manual Hydraulic Press",
+    "date": "2024-02-03",
+    "issue": "Pressure gauge reading unstable and bouncing during pressing cycles.",
+    "symptoms": "Gauge needle fluctuates 500-1500 psi under steady load; occasional knocking sound from pump.",
+    "root_cause": "Contaminated hydraulic oil and partially clogged gauge line.",
+    "solution_applied": "Drained and flushed hydraulic system, replaced gauge hose, filled with fresh hydraulic jack oil, verified gauge calibration against known load.",
+    "downtime_hours": 4.0,
+    "technician": "S. Okafor"
+  },
+  {
+    "case_id": "RL-2024-003",
+    "equipment": "Borum 20T Hydraulic Workshop Press",
+    "date": "2024-03-18",
+    "issue": "Hydraulic hose burst during bearing press operation near rated capacity.",
+    "symptoms": "Sudden pressure drop, oil spray from hose near pump, operation stopped mid-cycle.",
+    "root_cause": "Aged hose exceeded service life; operator exceeded recommended cycle pressure without monitoring gauge.",
+    "solution_applied": "Replaced high-pressure hose and fittings, inspected all connections for cracks, retrained operator on maximum load limits and gauge monitoring.",
+    "downtime_hours": 6.0,
+    "technician": "J. Martinez"
+  },
+  {
+    "case_id": "RL-2024-004",
+    "equipment": "Atlas 25T Manual Hydraulic Press",
+    "date": "2024-04-22",
+    "issue": "Release valve stuck; ram would not retract after pressing.",
+    "symptoms": "Handle on release valve stiff, ram remained extended, pressure remained on gauge.",
+    "root_cause": "Debris contamination in release valve seat from dirty work environment.",
+    "solution_applied": "Disassembled and cleaned release valve, replaced worn seat washer, tested ram raise/lower cycle ten times under no load.",
+    "downtime_hours": 3.0,
+    "technician": "L. Chen"
+  },
+  {
+    "case_id": "RL-2024-005",
+    "equipment": "Borum 20T Hydraulic Workshop Press",
+    "date": "2024-05-09",
+    "issue": "Bed frame misalignment causing uneven pressure on workpiece.",
+    "symptoms": "Workpiece tilts during press, uneven wear on bed plates, creaking from frame.",
+    "root_cause": "Loose anchor bolts and worn lifting bar bushings after repeated heavy use.",
+    "solution_applied": "Re-torqued floor anchor bolts, replaced lifting bar bushings, realigned bed plates and verified level with spirit level.",
+    "downtime_hours": 5.0,
+    "technician": "S. Okafor"
+  },
+  {
+    "case_id": "RL-2024-006",
+    "equipment": "Atlas 15T Manual Hydraulic Press",
+    "date": "2024-06-14",
+    "issue": "Pump requires excessive handle strokes to build pressure.",
+    "symptoms": "Slow ram travel, handle resistance lower than normal, longer cycle times.",
+    "root_cause": "Low hydraulic oil level and worn pump seals.",
+    "solution_applied": "Topped up hydraulic oil, replaced pump seal kit, bled system, verified full pressure within normal stroke count.",
+    "downtime_hours": 3.5,
+    "technician": "L. Chen"
+  },
+  {
+    "case_id": "RL-2024-007",
+    "equipment": "Borum 20T Hydraulic Workshop Press",
+    "date": "2024-07-01",
+    "issue": "Intermittent hydraulic leak at cylinder base during high-load straightening job.",
+    "symptoms": "Oil pooling on floor after 20-ton load cycles, slight drop in max pressure.",
+    "root_cause": "Damaged cylinder rod seal from side load on workpiece.",
+    "solution_applied": "Replaced cylinder rod seal, installed alignment guide for workpiece, load-tested to 80% rated capacity before return to service.",
+    "downtime_hours": 8.0,
+    "technician": "J. Martinez"
+  },
+  {
+    "case_id": "RL-2024-008",
+    "equipment": "Atlas 25T Manual Hydraulic Press",
+    "date": "2024-08-19",
+    "issue": "Safety guard bracket cracked after impact from falling tool.",
+    "symptoms": "Visible crack in guard mount, guard shifted out of position, operator reported near-miss.",
+    "root_cause": "Guard struck during maintenance; bracket not inspected before returning press to service.",
+    "solution_applied": "Replaced guard bracket with manufacturer part, reinstalled guard, documented pre-use visual inspection checklist update.",
+    "downtime_hours": 2.0,
+    "technician": "S. Okafor"
+  },
+  {
+    "case_id": "RL-2024-009",
+    "equipment": "Borum 20T Hydraulic Workshop Press",
+    "date": "2024-09-27",
+    "issue": "Press would not hold load; ram dropped 5 mm over 30 seconds under 10-ton load.",
+    "symptoms": "Gradual ram descent, pressure gauge bleed-down, no external leaks visible.",
+    "root_cause": "Internal check valve wear in pump assembly.",
+    "solution_applied": "Rebuilt pump check valve assembly, replaced internal seals, performed hold test at 50% and 100% rated load.",
+    "downtime_hours": 7.0,
+    "technician": "L. Chen"
+  },
+  {
+    "case_id": "RL-2024-010",
+    "equipment": "Atlas 15T Manual Hydraulic Press",
+    "date": "2024-10-11",
+    "issue": "Unusual noise and vibration from pump during return stroke.",
+    "symptoms": "Grinding noise on release, handle vibration, slow retraction.",
+    "root_cause": "Air ingress through loose filler cap and low oil level.",
+    "solution_applied": "Tightened filler cap, bled air from system, filled oil to mark, verified quiet operation over 20 cycles.",
+    "downtime_hours": 1.5,
+    "technician": "J. Martinez"
+  },
+  {
+    "case_id": "RL-2024-011",
+    "equipment": "Borum 20T Hydraulic Workshop Press",
+    "date": "2024-11-05",
+    "issue": "Pressure gauge reads zero despite normal ram movement.",
+    "symptoms": "Gauge stuck at 0 psi, ram still moves, no visible gauge damage.",
+    "root_cause": "Failed gauge bourdon tube from over-pressure spike during improper spring compression attempt.",
+    "solution_applied": "Replaced pressure gauge, installed overload warning label, briefed team on prohibited spring compression tasks.",
+    "downtime_hours": 1.0,
+    "technician": "S. Okafor"
+  },
+  {
+    "case_id": "RL-2024-012",
+    "equipment": "Atlas 25T Manual Hydraulic Press",
+    "date": "2024-12-02",
+    "issue": "Hydraulic oil overheating during repeated production pressing cycles.",
+    "symptoms": "Oil too hot to touch after 30 cycles, slower press response, burnt smell.",
+    "root_cause": "Continuous duty beyond recommended cycle rate with insufficient rest intervals.",
+    "solution_applied": "Implemented 5-minute cool-down every 25 cycles, changed oil, added cycle counter log for operators.",
+    "downtime_hours": 2.5,
+    "technician": "L. Chen"
+  },
+  {
+    "case_id": "RL-2025-001",
+    "equipment": "Borum 20T Hydraulic Workshop Press",
+    "date": "2025-01-20",
+    "issue": "Ram fails to extend fully; stops 20 mm short of normal stroke.",
+    "symptoms": "Incomplete stroke, pressure builds then stalls, no external leak.",
+    "root_cause": "Foreign debris on bed plate pins preventing full descent alignment.",
+    "solution_applied": "Cleaned and inspected bed plate pins, removed metal shard from prior job, lubricated guide surfaces, verified full stroke.",
+    "downtime_hours": 1.0,
+    "technician": "J. Martinez"
+  },
+  {
+    "case_id": "RL-2025-002",
+    "equipment": "Atlas 15T Manual Hydraulic Press",
+    "date": "2025-02-08",
+    "issue": "Operator reported hands slipping on pump handle; reduced control during pressing.",
+    "symptoms": "Handle surface worn smooth, difficulty modulating pressure, near overtravel on small part.",
+    "root_cause": "Worn handle grip and inadequate gloves for oily conditions.",
+    "solution_applied": "Replaced pump handle grip, enforced heavy-duty glove requirement, added non-slip mat at operator station.",
+    "downtime_hours": 0.5,
+    "technician": "S. Okafor"
+  },
+  {
+    "case_id": "RL-2025-003",
+    "equipment": "Borum 20T Hydraulic Workshop Press",
+    "date": "2025-03-15",
+    "issue": "Repeated failure to build pressure after cold start on morning shift.",
+    "symptoms": "First cycles weak until afternoon, thicker oil behavior in cold bay, slow response.",
+    "root_cause": "Hydraulic oil viscosity too high for unheated workshop in winter.",
+    "solution_applied": "Switched to lower-viscosity hydraulic jack oil rated for cold service, warmed bay above 10C before first use, updated maintenance SOP.",
+    "downtime_hours": 2.0,
+    "technician": "L. Chen"
+  }
+]

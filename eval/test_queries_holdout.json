@@ -1,0 +1,81 @@
+{
+  "version": "1.0-holdout",
+  "description": "Unseen holdout evaluation dataset for testing generalizability of orchestrator routing logic.",
+  "source_collections": {
+    "researcher": "equipment_manuals (Manual-Hydraulic-Press-Manual.pdf, BPROSP20TManual.pdf)",
+    "auditor": "compliance_docs (Guidelines-on-Safe-Use-of-Press-Machines-2015.pdf, hydraulic-press.pdf)",
+    "troubleshooter": "repair_logs (RL-2024-001 through RL-2025-003)"
+  },
+  "queries": [
+    {
+      "id": "H_R01",
+      "category": "researcher",
+      "query": "Where is the hydraulic oil filler nut located on the BPROSP20T model and how do I open it?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Must cite BPROSP20TManual.pdf for oil filler nut location on reservoir and instructions for removing the nut/screw to inspect fluid level."
+    },
+    {
+      "id": "H_R02",
+      "category": "researcher",
+      "query": "What is the step-by-step procedure in the manual for storing the press when not in use?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Must cite manual storage recommendations: fully retracting ram/piston, closing release valve, wiping clean, storing in clean dry area."
+    },
+    {
+      "id": "H_A01",
+      "category": "auditor",
+      "query": "Are operators required to wear safety footwear and eye protection when operating the press?",
+      "expected_agents": ["auditor"],
+      "ground_truth_notes": "Must reference hydraulic-press.pdf PPE requirements: safety shoes/footwear, safety glasses/eye protection, avoiding loose clothing around pinch points."
+    },
+    {
+      "id": "H_A02",
+      "category": "auditor",
+      "query": "Is it permissible to bypass the daily pre-operation visual inspection if the press ran without issues on the previous shift?",
+      "expected_agents": ["auditor"],
+      "ground_truth_notes": "Must be non-compliant. Cite Guidelines-on-Safe-Use-of-Press-Machines-2015.pdf requiring daily visual inspections before work begins regardless of prior shift performance."
+    },
+    {
+      "id": "H_T01",
+      "category": "troubleshooter",
+      "query": "We noticed a puddle of hydraulic oil around the base of the press frame after heavy pressing operations — have we seen cylinder seal leaks like this before?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-007: oil pooling at cylinder base during high-load 20-ton straightening, replaced cylinder rod seal and installed alignment guide."
+    },
+    {
+      "id": "H_T02",
+      "category": "troubleshooter",
+      "query": "The press bed seems unlevel and workpieces are tilting to one side under load — what resolved this in past maintenance records?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-005: bed frame misalignment, re-torqued floor anchor bolts, replaced lifting bar bushings, realigned bed plates."
+    },
+    {
+      "id": "H_T03",
+      "category": "troubleshooter",
+      "query": "The hydraulic oil smells burnt and the pump reservoir feels uncomfortably hot after continuous production runs — any prior repair logs for this?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-012: hydraulic fluid overheating after ~30 continuous production cycles, changed oil and instituted mandatory cool-down intervals."
+    },
+    {
+      "id": "H_M01",
+      "category": "multi_agent",
+      "query": "Fluid is leaking near the pump fitting and the ram is creeping down. Is it safe to keep running production while we check past repair logs?",
+      "expected_agents": ["researcher", "auditor", "troubleshooter"],
+      "ground_truth_notes": "Requires all three agents: active leakage + ram creep + safety question ('is it safe'). Must advise stopping production immediately."
+    },
+    {
+      "id": "H_M02",
+      "category": "multi_agent",
+      "query": "We need to check the oil capacity specification in the manual and also search if we've ever replaced pump seals for low pressure before.",
+      "expected_agents": ["researcher", "troubleshooter"],
+      "ground_truth_notes": "Explicitly requests manual oil specs (researcher) AND past repair history for pump seal replacements (troubleshooter RL-2024-006)."
+    },
+    {
+      "id": "H_M03",
+      "category": "multi_agent",
+      "query": "What does the manual say about positioning the work bed plate, and is it compliant to operate if the interlocked guard is removed?",
+      "expected_agents": ["researcher", "auditor"],
+      "ground_truth_notes": "Requests manual instructions for bed plate placement (researcher) AND safety compliance ruling on operating without interlocked guards (auditor)."
+    }
+  ]
+}

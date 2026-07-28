@@ -1,0 +1,235 @@
+{
+  "version": "1.0",
+  "description": "Ground-truth eval set for the hydraulic press multi-agent RAG system (ARCHITECTURE.md section 7, step 8). Review ground_truth_notes before running automated scoring.",
+  "source_collections": {
+    "researcher": "equipment_manuals (Manual-Hydraulic-Press-Manual.pdf, BPROSP20TManual.pdf)",
+    "auditor": "compliance_docs (Guidelines-on-Safe-Use-of-Press-Machines-2015.pdf, hydraulic-press.pdf)",
+    "troubleshooter": "repair_logs (eval references case IDs: RL-2024-001 through RL-2024-012, RL-2025-001, RL-2025-002; RL-2025-003 is ingested but not used in this eval set)"
+  },
+  "queries": [
+    {
+      "id": "R01",
+      "category": "researcher",
+      "query": "How do I purge trapped air from the hydraulic pump if the handle feels spongy?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Must reference BPROSP20TManual.pdf purging procedure: check oil level (32 grade hydraulic oil), open release valve counter-clockwise, pump handle/pedal 5–10 times, close release valve and pump until ram returns to firm operation, repeat if still spongy. Should cite source filename and not invent steps absent from the manual."
+    },
+    {
+      "id": "R02",
+      "category": "researcher",
+      "query": "What hydraulic oil grade and fill level should I use for this press?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Must mention 32 grade hydraulic oil (BPROSP20TManual.pdf) and that fluid level should be near the bottom of the oil filler hole when checking. Should not recommend arbitrary oil grades not in the manuals."
+    },
+    {
+      "id": "R03",
+      "category": "researcher",
+      "query": "What is the maximum piston travel limit and what happens if I exceed it?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Must cite Manual-Hydraulic-Press-Manual.pdf: 25 mm maximum piston travel, red ring visible at limit, instruction to DO NOT CONTINUE PUMPING when red ring shows. Should mention risk of damaging press mechanism and internal spring stud (16) designed to break as protection."
+    },
+    {
+      "id": "R04",
+      "category": "researcher",
+      "query": "The release valve seems to be leaking and the press won't hold pressure — what does the manual say to do?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Must reference Manual-Hydraulic-Press-Manual.pdf release valve troubleshooting: ball bearing (58) may not seat due to foreign matter; remedy includes pumping ~10 times with release handle loosened to wash debris, and if needed inspecting/cleaning ball bearing and O-ring (57). Should cite manual source, not generic hydraulic advice."
+    },
+    {
+      "id": "R05",
+      "category": "researcher",
+      "query": "How do I lower the ram and release pressure after a pressing cycle?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Should describe opening/loosening the release valve (counter-clockwise per BPROSP20TManual.pdf purging steps, or twisting relief valve per hydraulic-press.pdf JSA). Must mention confirming pressure is released / gauge reads zero before accessing work area (hydraulic-press.pdf clean-up step). Cite at least one ingested manual."
+    },
+    {
+      "id": "R06",
+      "category": "researcher",
+      "query": "What maintenance steps does the manual recommend for the non-return valve if the press fails to build pressure?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Must draw from Manual-Hydraulic-Press-Manual.pdf non-return valve / pressure failure remedies (similar release-valve debris-wash procedure or valve inspection steps in that manual section). Should acknowledge if excerpts only partially cover non-return valve vs release valve. No invented part numbers."
+    },
+    {
+      "id": "R07",
+      "category": "researcher",
+      "query": "What is the step-by-step oil fill and bleed procedure after topping up hydraulic fluid?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Must follow BPROSP20TManual.pdf sequence: remove oil fill screw, verify level at filler hole, top up with 32 grade hydraulic oil, leave cap off during bleed, open release valve, operate pump 5–10 times, close valve and pump to firm operation, replace filler cap. Cite BPROSP20TManual.pdf."
+    },
+    {
+      "id": "R08",
+      "category": "researcher",
+      "query": "Where in the manual does it warn about over-pumping the piston, and what damage can result?",
+      "expected_agents": ["researcher"],
+      "ground_truth_notes": "Must cite Manual-Hydraulic-Press-Manual.pdf piston travel section: 25 mm limit, red ring indicator, DO NOT CONTINUE PUMPING, damage to press mechanism, spring stud (16) may break causing piston not to return easily. Must not invent additional failure modes beyond manual text."
+    },
+    {
+      "id": "A01",
+      "category": "auditor",
+      "query": "Is it compliant to keep using the press when there is a known malfunction such as ram drift or loss of holding pressure?",
+      "expected_agents": ["auditor"],
+      "ground_truth_notes": "Should find non-compliant or unsafe assessment citing Guidelines-on-Safe-Use-of-Press-Machines-2015.pdf (employers must compile safety information; hazards must be identified) and/or hydraulic-press.pdf hazard controls. Must warn against operating faulty equipment; should not approve continued use without repair."
+    },
+    {
+      "id": "A02",
+      "category": "auditor",
+      "query": "Can I run a pressing job without machine guards in place if I'm careful?",
+      "expected_agents": ["auditor"],
+      "ground_truth_notes": "Must cite hydraulic-press.pdf: machine guards should be in place; pinch hazards from moving parts. Finding should be non-compliant / unsafe to operate without guards. Should reference hazard controls (keep body parts away, eye protection) from same source."
+    },
+    {
+      "id": "A03",
+      "category": "auditor",
+      "query": "Is it acceptable to put my hands in the press area to adjust the workpiece while pressure is still on the lines?",
+      "expected_agents": ["auditor"],
+      "ground_truth_notes": "Must reference hydraulic-press.pdf clean-up/finish work: twist relief valve, confirm gauge reads 0 and all pressure is gone before putting hand into work area. Finding must be non-compliant if pressure not released. Cite hydraulic-press.pdf pinch hazard controls."
+    },
+    {
+      "id": "A04",
+      "category": "auditor",
+      "query": "We noticed contaminated hydraulic oil but production is behind — can we keep cycling the press until the weekend flush?",
+      "expected_agents": ["auditor"],
+      "ground_truth_notes": "Should cite Guidelines-on-Safe-Use-of-Press-Machines-2015.pdf hydraulic power unit maintenance: system should be functioning and free from contaminant; oil change at manufacturer recommendation. Finding should flag continued use with contaminated oil as non-compliant or high risk."
+    },
+    {
+      "id": "A05",
+      "category": "auditor",
+      "query": "Is it okay to exceed recommended cycle pressure as long as the gauge looks stable?",
+      "expected_agents": ["auditor"],
+      "ground_truth_notes": "Must be non-compliant. Should reference hydraulic-press.pdf hazards (line break from over-pressurization, flying debris) and/or Guidelines-on-Safe-Use-of-Press-Machines-2015.pdf. Must require gauge monitoring and staying within limits."
+    },
+    {
+      "id": "A06",
+      "category": "auditor",
+      "query": "Do we need written safety information before operators start press work?",
+      "expected_agents": ["auditor"],
+      "ground_truth_notes": "Must cite Guidelines-on-Safe-Use-of-Press-Machines-2015.pdf: employers must compile written safety information before conducting press work; safety information must include hazards. Should mention safety signage / visual safety information types from same document."
+    },
+    {
+      "id": "A07",
+      "category": "auditor",
+      "query": "The safety guard bracket is cracked but still attached — is it compliant to use the press for one more shift?",
+      "expected_agents": ["auditor"],
+      "ground_truth_notes": "Must be non-compliant or require guard repair before use. Should cite hydraulic-press.pdf guard requirements and/or Guidelines-on-Safe-Use-of-Press-Machines-2015.pdf safety information expectations."
+    },
+    {
+      "id": "T01",
+      "category": "troubleshooter",
+      "query": "The ram drifts down slowly while the release valve is closed and the pump feels spongy — have we seen this before?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-001: air trapped after hose replacement, minor tee coupler O-ring leak; solution was bleed per manual, replace O-ring, refill hydraulic jack oil, pressure test. Should return case_id RL-2024-001 with similar symptoms."
+    },
+    {
+      "id": "T02",
+      "category": "troubleshooter",
+      "query": "Pressure gauge needle bouncing between 500 and 1500 psi under steady load — any similar past cases?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-002: contaminated hydraulic oil and partially clogged gauge line; fix was drain/flush system, replace gauge hose, fresh oil, verify calibration. Case_id RL-2024-002."
+    },
+    {
+      "id": "T03",
+      "category": "troubleshooter",
+      "query": "A hydraulic hose burst near the pump during a bearing press at high load — what happened in similar incidents?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-003: aged hose exceeded service life, operator exceeded recommended cycle pressure without monitoring gauge; replaced hose/fittings, inspected connections, retrained operator. Case_id RL-2024-003."
+    },
+    {
+      "id": "T04",
+      "category": "troubleshooter",
+      "query": "Release valve is stuck and the ram won't retract — what repairs fixed this in the past?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-004: debris contamination in release valve seat; disassembled and cleaned valve, replaced worn seat washer, tested raise/lower cycle. Case_id RL-2024-004."
+    },
+    {
+      "id": "T05",
+      "category": "troubleshooter",
+      "query": "Press won't hold load — ram dropped about 5 mm in 30 seconds under a 10-ton load. Similar repairs?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-009: internal check valve wear in pump assembly; rebuilt check valve, replaced internal seals, hold tests at 50% and 100% rated load. Case_id RL-2024-009 (RL-2024-001 is partial match but 009 is closer on hold/load drop)."
+    },
+    {
+      "id": "T06",
+      "category": "troubleshooter",
+      "query": "Pump needs way too many handle strokes to build pressure — what fixed this before?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-006: low hydraulic oil level and worn pump seals; topped up oil, replaced pump seal kit, bled system. Case_id RL-2024-006."
+    },
+    {
+      "id": "T07",
+      "category": "troubleshooter",
+      "query": "The workpiece tilts during pressing and the bed plates look uneven — have we fixed bed frame misalignment before?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-005: issue was bed frame misalignment causing uneven pressure (workpiece tilts, uneven bed plate wear, frame creaking); root cause loose anchor bolts and worn lifting bar bushings; solution re-torqued floor anchor bolts, replaced lifting bar bushings, realigned bed plates and verified level with spirit level. Case_id RL-2024-005."
+    },
+    {
+      "id": "T08",
+      "category": "troubleshooter",
+      "query": "Hydraulic oil pools on the floor after heavy 20-ton straightening cycles and max pressure seems slightly lower — any past cases?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-007: intermittent hydraulic leak at cylinder base during high-load straightening (oil pooling, slight drop in max pressure); root cause damaged cylinder rod seal from side load; solution replaced cylinder rod seal, installed alignment guide for workpiece, load-tested to 80% rated capacity. Case_id RL-2024-007."
+    },
+    {
+      "id": "T09",
+      "category": "troubleshooter",
+      "query": "The safety guard bracket is cracked and the guard shifted after something hit it during maintenance — what did we do in similar incidents?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-008: safety guard bracket cracked after impact from falling tool (visible crack, guard out of position, near-miss); root cause guard struck during maintenance without inspection before return to service; solution replaced guard bracket with manufacturer part, reinstalled guard, updated pre-use visual inspection checklist. Case_id RL-2024-008."
+    },
+    {
+      "id": "T10",
+      "category": "troubleshooter",
+      "query": "Grinding noise and handle vibration on the return stroke with slow retraction — have we seen this before?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-010: unusual noise and vibration from pump during return stroke (grinding on release, handle vibration, slow retraction); root cause air ingress through loose filler cap and low oil level; solution tightened filler cap, bled air, filled oil to mark, verified quiet operation over 20 cycles. Case_id RL-2024-010."
+    },
+    {
+      "id": "T11",
+      "category": "troubleshooter",
+      "query": "Hydraulic oil gets too hot after about 30 production cycles and the press slows down — similar past repairs?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2024-012: hydraulic oil overheating during repeated production cycles (oil too hot to touch after ~30 cycles, slower response, burnt smell); root cause continuous duty beyond recommended cycle rate; solution implemented 5-minute cool-down every 25 cycles, changed oil, added cycle counter log. Case_id RL-2024-012."
+    },
+    {
+      "id": "T12",
+      "category": "troubleshooter",
+      "query": "The ram stops about 20 mm short of full stroke and pressure stalls with no external leak — what fixed this previously?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2025-001: ram fails to extend fully, stops ~20 mm short (incomplete stroke, pressure builds then stalls, no external leak); root cause foreign debris on bed plate pins; solution cleaned and inspected bed plate pins, removed metal shard, lubricated guide surfaces, verified full stroke. Case_id RL-2025-001."
+    },
+    {
+      "id": "T13",
+      "category": "troubleshooter",
+      "query": "Operators say the pump handle is slippery and hard to control under oily conditions — any prior fixes?",
+      "expected_agents": ["troubleshooter"],
+      "ground_truth_notes": "Must match RL-2025-002: hands slipping on pump handle, reduced control (worn smooth handle, difficulty modulating pressure, near overtravel); root cause worn handle grip and inadequate gloves; solution replaced pump handle grip, enforced heavy-duty glove requirement, added non-slip mat at operator station. Case_id RL-2025-002."
+    },
+    {
+      "id": "M01",
+      "category": "multi_agent",
+      "query": "The ram drifts down and feels spongy. Is it safe to keep using the press?",
+      "expected_agents": ["researcher", "auditor", "troubleshooter"],
+      "ground_truth_notes": "Researcher: BPROSP20TManual.pdf air-purge procedure and Manual-Hydraulic-Press-Manual.pdf release valve / piston warnings. Auditor: non-compliant to operate with known malfunction (Guidelines-on-Safe-Use-of-Press-Machines-2015.pdf, hydraulic-press.pdf hazards). Troubleshooter: RL-2024-001 (bleed + O-ring), possibly RL-2024-009. Synthesized answer must say stop using press, not approve continued operation."
+    },
+    {
+      "id": "M02",
+      "category": "multi_agent",
+      "query": "Pressure gauge reads zero but the ram still moves — what does the manual say and have we repaired this before?",
+      "expected_agents": ["researcher", "troubleshooter"],
+      "ground_truth_notes": "Researcher: may note gauge vs ram behavior from manuals if covered; acceptable to say manual excerpts may not fully address gauge-at-zero scenario. Troubleshooter: must cite RL-2024-011 — failed gauge bourdon tube from over-pressure spike; replaced gauge, overload warning label. Must not invent manual steps absent from corpus."
+    },
+    {
+      "id": "M03",
+      "category": "multi_agent",
+      "query": "I need to compress a spring and the piston red ring is starting to show — can I keep pumping to finish the job?",
+      "expected_agents": ["researcher", "auditor"],
+      "ground_truth_notes": "Researcher: Manual-Hydraulic-Press-Manual.pdf — DO NOT CONTINUE PUMPING when red ring shows, 25 mm travel limit, damage risk. Auditor: non-compliant / unsafe to continue; cite hydraulic-press.pdf over-pressurization hazards or Guidelines safety requirements. Must clearly say stop pumping."
+    },
+    {
+      "id": "M04",
+      "category": "multi_agent",
+      "query": "After a hose replacement the press feels spongy and drifts — what's the fix, is it safe to use today, and have we done this repair before?",
+      "expected_agents": ["researcher", "auditor", "troubleshooter"],
+      "ground_truth_notes": "Researcher: BPROSP20TManual.pdf bleed/purge procedure, 32 grade oil. Troubleshooter: RL-2024-001 (air after hose replacement, O-ring at tee coupler). Auditor: not safe for production until bled, leak fixed, and pressure-tested. All three agent perspectives required; must not approve use before repair verified."
+    }
+  ]
+}
