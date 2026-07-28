@@ -82,9 +82,10 @@ Routing rules (apply in strict order):
      (b) Factual/descriptive lookups whose content lives in the compliance PDF (DOSH Guidelines), including:
          - Safety device definitions and requirements (e.g., "What is a Gate Safety Plug?", "What is a Safety Block?", "What are the required safety features on a press machine?")
          - Press machine classifications, types, and construction (e.g., "What are the types of press machines based on energy source?", "What is the difference between C-Frame and H-Frame press machines?", "How many types of presses are there?")
+         - Maintenance and replacement schedules for regulated parts (e.g., "What is the replacement schedule for clutch and brake?", "What is the critical parts lifetime for a press machine?", "What is the maintenance interval for safety-critical components?")
          - Regulatory definitions of machine components, guarding, or operational concepts drawn from safety guidelines rather than equipment manuals.
          Set proposed_action to null for ALL (b) cases — there is no action to audit.
-     KEY DISTINCTION: If the question asks about machine types, frame construction, or general classification AND these are likely defined in safety/regulatory guidelines (not just a specific product manual), route to auditor. Route to researcher ONLY when the question is clearly about operating a specific press model (procedures, oil capacity, bleeding steps, etc.).
+     KEY DISTINCTION: If the question asks about machine types, frame construction, general classification, OR regulated maintenance/replacement intervals AND these are likely defined in safety/regulatory guidelines (not just a specific product manual), route to auditor. Route to researcher ONLY when the question is clearly about operating a specific press model (procedures, oil capacity, bleeding steps, torque specs, etc.).
    - troubleshooter ONLY: Diagnosing why an active fault occurs or finding past repair cases without asking for manual procedures or safety compliance rulings (e.g., "Why is the ram drifting?", "Have we fixed a leaky valve before?").
 
 4. TWO-AGENT INTENTS (Only when two distinct intents are explicitly requested):
