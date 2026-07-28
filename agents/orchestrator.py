@@ -50,7 +50,7 @@ Default to ONE agent unless the query explicitly requires more.
 
 Available agents:
 - researcher: equipment manuals — operating procedures, specifications, limits, maintenance steps
-- auditor: safety/compliance judgment — whether a proposed or ongoing action is permitted
+- auditor: safety/compliance information AND judgment — regulatory requirements, safety feature definitions, inspection requirements, safety device descriptions (e.g., Gate Safety Plug, Safety Block, two-hand control), AND compliance judgment calls (whether a proposed or ongoing action is permitted)
 - troubleshooter: fault diagnosis and similar past repair cases from maintenance logs
 
 Return ONLY valid JSON:
@@ -77,7 +77,10 @@ Routing rules (apply in strict order):
 
 3. SINGLE-AGENT DEFAULT — pick exactly ONE agent if Rule 1 does not apply and only one intent is present:
    - researcher ONLY: How-to guides, maintenance procedures, specifications, operating limits, or "what does the manual say" (e.g., "How do I bleed spongy lines?", "What is the oil capacity?").
-   - auditor ONLY: Regulatory compliance, safety standards, inspection requirements, policy questions, or compliance determinations ("Is it compliant to keep using...", "Is X compliant?", "Do we need written safety info?").
+   - auditor ONLY:
+     (a) Regulatory compliance, safety standards, inspection requirements, policy questions, or compliance determinations ("Is it compliant to keep using...", "Is X compliant?", "Do we need written safety info?").
+     (b) Factual questions about safety devices, safety features, or regulatory definitions from compliance documents (e.g., "What is a Gate Safety Plug?", "What are the required safety features on a press machine?", "What is a Safety Block?", "What are the 7 safety features connected to the electrical control unit?"). These are definition/information lookups from the compliance PDF — NOT manual lookups.
+     Set proposed_action to null for (b) cases since there is no action to audit.
    - troubleshooter ONLY: Diagnosing why an active fault occurs or finding past repair cases without asking for manual procedures or safety compliance rulings (e.g., "Why is the ram drifting?", "Have we fixed a leaky valve before?").
 
 4. TWO-AGENT INTENTS (Only when two distinct intents are explicitly requested):
@@ -114,8 +117,9 @@ def run_orchestrator(query: str) -> OrchestratorResult:
         result.researcher = run_researcher(query).to_dict()
 
     if "auditor" in plan.agents:
-        audit_target = plan.proposed_action or query
-        result.auditor = run_auditor(audit_target).to_dict()
+        result.auditor = run_auditor(
+            query, proposed_action=plan.proposed_action
+        ).to_dict()
 
     if "troubleshooter" in plan.agents:
         result.troubleshooter = run_troubleshooter(query).to_dict()
